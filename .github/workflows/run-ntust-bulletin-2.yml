@@ -1,8 +1,11 @@
-name: Run NTUST Bulletin 2 every 19:30 pm
+name: Run NTUST Bulletin 2
 
 on:
   schedule:
-    - cron:  '30 19 * * *'
+    - cron:  '30 12 * * *'
+  push:
+    branches:
+      - master
 
 permissions:
   contents: read
