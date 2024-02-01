@@ -29,7 +29,7 @@ class Announcement():
 
 
 class IMAPClient():
-    client = imaplib.IMAP4_SSL(HOST)
+    client = imaplib.IMAP4(HOST)
 
     def __init__(self, user: str, password: str):
         self.client.login(user, password)
