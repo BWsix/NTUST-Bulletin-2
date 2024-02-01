@@ -1,8 +1,8 @@
-name: Run NTUST Bulletin 2
+name: Run NTUST Bulletin 2 everyday at 8 pm (UTC+8)
 
 on:
   schedule:
-    - cron:  '30 12 * * *'
+    - cron:  '0 12 * * *' # 8 pm (UTC+8)
   push:
     branches:
       - master
@@ -12,24 +12,21 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python 3.11
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
-        python-version: "3.11"
+        python-version: '3.11'
+        cache: 'pip'
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run NTUST Buttelin 2
+      run: pip install -r requirements.txt
+    - name: Run NTUST Bulletin 2
       env:
         MAIL_USER: ${{ secrets.MAIL_USER }}
         MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
         RECIPIENT: ${{ vars.RECIPIENT }}
         SKIP_DATE_CHECK: ${{ vars.SKIP_DATE_CHECK }}
-      run: |
-        python main.py
+      run: python main.py
