@@ -23,5 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run NTUST Buttelin 2
+      env:
+        MAIL_USER: ${{ secrets.MAIL_USER }}
+        MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        RECIPIENT: ${{ vars.RECIPIENT }}
+        SKIP_DATE_CHECK: ${{ vars.SKIP_DATE_CHECK }}
       run: |
         python main.py

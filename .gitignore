@@ -1,0 +1,13 @@
+*
+
+!README.md
+!LICENSE
+!.gitignore
+
+!.github/
+!.github/workflows/
+!.github/workflows/run-ntust-bulletin-2.yml
+
+!requirements.txt
+!main.py
+!minified_template.html
